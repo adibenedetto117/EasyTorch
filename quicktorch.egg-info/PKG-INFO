@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: quicktorch
+Version: 0.0.1
+Summary: Fast and easy wrapper for PyTorch making it easy to use for beginners
+Home-page: https://github.com/adibenedetto117/quicktorch
+Author: Anthony DiBenedetto and David Abrutis
+Author-email: adibenedetto117@gmail.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+License-File: LICENSE.txt
+
+UNKNOWN
+

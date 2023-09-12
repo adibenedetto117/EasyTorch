@@ -1,0 +1,12 @@
+LICENSE.txt
+MANIFEST.in
+setup.py
+quicktorch/__init__.py
+quicktorch/cnn.py
+quicktorch/lstm.py
+quicktorch/rnn.py
+quicktorch.egg-info/PKG-INFO
+quicktorch.egg-info/SOURCES.txt
+quicktorch.egg-info/dependency_links.txt
+quicktorch.egg-info/requires.txt
+quicktorch.egg-info/top_level.txt
