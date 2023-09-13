@@ -4,6 +4,8 @@ setup.py
 quicktorch/__init__.py
 quicktorch/cnn.py
 quicktorch/lstm.py
+quicktorch/main.py
+quicktorch/mlp.py
 quicktorch/rnn.py
 quicktorch.egg-info/PKG-INFO
 quicktorch.egg-info/SOURCES.txt
