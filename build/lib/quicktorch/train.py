@@ -2,8 +2,9 @@ import torch
 from sklearn.metrics import accuracy_score  # For calculating accuracy
 import copy
 import numpy as np
+import torch.nn as nn
 
-def train_model(model, train_loader, test_loader, optimizer, criterion, epochs, task_type, verbose=True):
+def train_model(model, train_loader, test_loader, optimizer, criterion, epochs, task_type, output_activation_layer, verbose=True):
 
     training_results = {}
     
@@ -72,21 +73,26 @@ def train_model(model, train_loader, test_loader, optimizer, criterion, epochs, 
                 preds = np.argmax(all_preds, axis=1)
             else:
                 all_preds_tensor = torch.FloatTensor(all_preds)
-                preds = torch.round(torch.sigmoid(all_preds_tensor))
+                if isinstance(output_activation_layer, nn.Sigmoid):
+                    preds = torch.round(all_preds_tensor)
+                else:
+                    preds = torch.round(torch.sigmoid(all_preds_tensor))
             accuracy = accuracy_score(all_labels, preds)
-            accuracy_values.append(accuracy)
+            
 
         if verbose:
             if epoch % (round(epochs*.1)) == 0:
-                print_str = f"Epoch [{epoch+1}/{epochs}], Training Loss: {loss.item():.8f}, Test Loss: {test_loss:.8f}"
+                print_str = f"Epoch [{epoch+1}/{epochs}] | Training Loss: {loss.item():.8f} | Test Loss: {test_loss:.8f} |"
                 if task_type in ['mcc', 'bc']:
-                    print_str += f", Test Accuracy: {accuracy * 100:.2f}%"
+                    print_str += f" Test Accuracy: {accuracy * 100:.2f}%"
                 print(print_str)
 
-        if epoch % (round(epochs*.5)) == 0:
-            loss_values.append(loss.item())
-            test_loss_values.append(test_loss)
-            epoch_count.append(epoch+1)
+
+        loss_values.append(loss.item())
+        test_loss_values.append(test_loss)
+        epoch_count.append(epoch+1)
+        if task_type in ['mcc', 'bc']:
+            accuracy_values.append(accuracy)
 
         
     training_results['loss'] = loss_values

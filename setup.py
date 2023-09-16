@@ -18,6 +18,7 @@ setuptools.setup(
         'numpy',
         'tqdm',
         'scikit-learn',
+        'matplotlib'
     ]
 
 )

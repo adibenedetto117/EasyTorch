@@ -64,7 +64,7 @@ def loss_fn(x, **kwargs):
     Factory function for creating PyTorch loss functions.
 
     Parameters:
-        x (str): The type of the loss function ('cross_entropy','mse','mae', 'bce_with_logits').
+        x (str): The type of the loss function ('cross_entropy','mse','mae', ''BCEWithLogitsLoss').
         kwargs (dict): Additional keyword arguments for the loss function constructor.
 
     Returns:

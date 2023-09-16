@@ -25,9 +25,22 @@ class multilayerPerceptron(nn.Module):
             dims.extend(reversed_dims[1:])
         
         elif struct == 2:
-            # Add your own struct=2 configuration here if needed.
-            pass
+            # Incremental Increase in Neurons
+            dims = [input_dim]
+            increment = round(hidden_dim*.25)
+            for i in range(num_hidden_layers):
+                dims.append(dims[-1] + increment)
+            dims.append(output_dim)
         
+        elif struct == 3:
+            # Pyramid Architecture
+            dims = [input_dim]
+            decrement = round((input_dim - hidden_dim) / num_hidden_layers)
+            for i in range(num_hidden_layers):
+                dims.append(max(dims[-1] - decrement, hidden_dim))
+            dims.append(output_dim)
+
+
         # Building the layers
         for i in range(len(dims) - 1):
             if i == len(dims) - 2:
@@ -44,7 +57,6 @@ class multilayerPerceptron(nn.Module):
         
         self.layers = nn.Sequential(*layers)
 
-        print(len(dims))
 
     def forward(self, x):
         return self.layers(x)
