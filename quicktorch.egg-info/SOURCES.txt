@@ -3,10 +3,13 @@ MANIFEST.in
 setup.py
 quicktorch/__init__.py
 quicktorch/cnn.py
+quicktorch/functions.py
 quicktorch/lstm.py
 quicktorch/main.py
 quicktorch/mlp.py
+quicktorch/mlparchitecture.py
 quicktorch/rnn.py
+quicktorch/train.py
 quicktorch.egg-info/PKG-INFO
 quicktorch.egg-info/SOURCES.txt
 quicktorch.egg-info/dependency_links.txt

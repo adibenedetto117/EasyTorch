@@ -15,8 +15,9 @@ setuptools.setup(
     ],
     install_requires=[
         'torch',
-        'torchvision',
-        'numpy'
+        'numpy',
+        'tqdm',
+        'scikit-learn',
     ]
 
 )
